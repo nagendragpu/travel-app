@@ -20,7 +20,7 @@ const Tabs = () => {
         style: {
           position: "absolute",
           backgroundColor: "#120c46",
-          bottom: 20,
+          // bottom: 20,
           left: 25,
           right: 25,
           borderRadius: 30,
