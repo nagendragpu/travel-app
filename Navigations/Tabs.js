@@ -8,6 +8,7 @@ import Profile from "../Screens/Profile";
 import { Feather } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Stack from "./Stack";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ const Tabs = () => {
     >
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={Stack}
         options={{
           tabBarIcon: (props) => {
             return (

@@ -8,6 +8,7 @@ import {
   TextInput,
   FlatList,
   TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
 import { Dimensions } from "react-native";
 import { Feather } from "@expo/vector-icons";
@@ -122,7 +123,7 @@ const Categories = [
     img: require("../assets/mountain.png"),
   },
 ];
-const Home = () => {
+const Home = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
   const windowHeight = Dimensions.get("window").height;
   return (
@@ -241,41 +242,55 @@ const Home = () => {
                   borderWidth: 1,
                 }}
               >
-                <View
-                  style={{
-                    height: 120,
-                    width: 120,
-                    borderRadius: 15,
-                    overflow: "hidden",
-                    elevation: 10,
-                    alignContent: "center",
-                    marginTop: 4,
+                <TouchableWithoutFeedback
+                  onPress={() => {
+                    navigation.navigate("Details");
                   }}
                 >
-                  <Image
-                    source={item.img}
-                    style={{ height: "100%", width: "100%" }}
-                  />
                   <View
                     style={{
-                      backgroundColor: "#fefeff",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center",
-                      borderRadius: 20,
-                      height: 30,
-                      width: 30,
-                      position: "absolute",
-                      right: 4,
-                      top: 4,
+                      height: 120,
+                      width: 120,
+                      borderRadius: 15,
+                      overflow: "hidden",
+                      elevation: 10,
+                      alignContent: "center",
+                      marginTop: 4,
                     }}
                   >
                     <Image
-                      source={require("../assets/love.png")}
-                      style={{ height: 20, width: 15, resizeMode: "center" }}
+                      source={item.img}
+                      style={{ height: "100%", width: "100%" }}
                     />
+                    <TouchableOpacity
+                      style={{ position: "absolute", right: 4, top: 4 }}
+                      onPress={() => {
+                        console.log("button pressed");
+                      }}
+                    >
+                      <View
+                        style={{
+                          backgroundColor: "#fefeff",
+                          flexDirection: "row",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          borderRadius: 20,
+                          height: 30,
+                          width: 30,
+                        }}
+                      >
+                        <Image
+                          source={require("../assets/love.png")}
+                          style={{
+                            height: 20,
+                            width: 15,
+                            resizeMode: "center",
+                          }}
+                        />
+                      </View>
+                    </TouchableOpacity>
                   </View>
-                </View>
+                </TouchableWithoutFeedback>
                 <Text
                   style={{
                     alignSelf: "flex-start",
@@ -334,36 +349,42 @@ const Home = () => {
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item }) => {
             return (
-              <View
-                style={{
-                  //   borderStyle: "solid",
-                  //   borderWidth: 1,
-                  marginHorizontal: 2,
-                  height: 80,
-                  width: 80,
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+              <TouchableOpacity
+                onPress={() => {
+                  console.log(item.name);
                 }}
               >
                 <View
                   style={{
-                    backgroundColor: "#f7f6f6",
-                    flexDirection: "row",
-                    justifyContent: "center",
+                    //   borderStyle: "solid",
+                    //   borderWidth: 1,
+                    marginHorizontal: 2,
+                    height: 80,
+                    width: 80,
+                    flexDirection: "column",
+                    justifyContent: "space-between",
                     alignItems: "center",
-                    borderRadius: 25,
-                    height: 50,
-                    width: 50,
                   }}
                 >
-                  <Image
-                    source={item.img}
-                    style={{ height: 30, width: 30, resizeMode: "center" }}
-                  />
+                  <View
+                    style={{
+                      backgroundColor: "#f7f6f6",
+                      flexDirection: "row",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      borderRadius: 25,
+                      height: 50,
+                      width: 50,
+                    }}
+                  >
+                    <Image
+                      source={item.img}
+                      style={{ height: 30, width: 30, resizeMode: "center" }}
+                    />
+                  </View>
+                  <Text>{item.name}</Text>
                 </View>
-                <Text>{item.name}</Text>
-              </View>
+              </TouchableOpacity>
             );
           }}
         />
