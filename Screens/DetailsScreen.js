@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Dimensions } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import MapView from "react-native-maps";
 
 const DetailsScreen = ({ navigation }) => {
   const windowWidth = Dimensions.get("window").width;
@@ -373,7 +374,11 @@ const DetailsScreen = ({ navigation }) => {
             </Text>
             <Text style={{ fontWeight: "500" }}>09.00 AM</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Settings");
+            }}
+          >
             <Text
               style={{ fontSize: 16, color: "skyblue", fontWeight: "bold" }}
             >
@@ -381,8 +386,21 @@ const DetailsScreen = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         </View>
+        <View style={{ borderRadius: 30, overflow: "hidden" }}>
+          <MapView
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            style={{ height: 200, marginVertical: 5 }}
+          />
+        </View>
+        <View style={{ height: 100 }}></View>
       </ScrollView>
 
+      {/* ----------Botton button-------------        */}
       <TouchableOpacity
         style={{
           position: "absolute",
