@@ -18,7 +18,7 @@ const Settings = ({ navigation }) => {
           backgroundColor: "#ffffff",
           paddingVertical: 22,
           paddingHorizontal: 20,
-          borderRadius: 20,
+          borderRadius: 18,
         }}
       >
         <TouchableOpacity
